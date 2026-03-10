@@ -141,6 +141,17 @@ export default function AdminDashboard() {
                                                                 {lead.brand.split(' ')[0]}
                                                             </span>
                                                         </td>
+                                                        <td style={{ padding: '1.25rem 1.5rem', fontSize: '0.85rem', color: 'var(--text-secondary)', maxWidth: '300px' }}>
+                                                            <div style={{ color: 'var(--text-primary)', fontWeight: 500, marginBottom: '0.25rem' }}>
+                                                                {lead.interest || 'General Inquiry'}
+                                                            </div>
+                                                            <div style={{ fontSize: '0.75rem', display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                                                                {lead.city && <span style={{ background: 'var(--bg-tertiary)', padding: '0.1rem 0.4rem', borderRadius: '4px' }}>📍 {lead.city}</span>}
+                                                                {lead.budget && <span style={{ background: 'var(--bg-tertiary)', padding: '0.1rem 0.4rem', borderRadius: '4px' }}>💰 {lead.budget}</span>}
+                                                                {lead.propertyType && <span style={{ background: 'var(--bg-tertiary)', padding: '0.1rem 0.4rem', borderRadius: '4px' }}>🏢 {lead.propertyType}</span>}
+                                                                {lead.visitDate && <span style={{ background: 'var(--bg-tertiary)', padding: '0.1rem 0.4rem', borderRadius: '4px' }}>📅 Site Visit: {lead.visitDate}</span>}
+                                                            </div>
+                                                        </td>
                                                         <td style={{ padding: '1.25rem 1.5rem' }}>
                                                             {lead.utm_source ? (
                                                                 <>

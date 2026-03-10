@@ -59,9 +59,9 @@ export default function Navigation() {
                     <Link href="/admin" className="nav-link nav-desktop" style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
                         Partner Portal
                     </Link>
-                    <a href="#contact" className="btn btn-primary" style={{ padding: '0.75rem 1.5rem', fontSize: '0.8rem' }}>
+                    <Link href="/#contact" className="btn btn-primary" style={{ padding: '0.75rem 1.5rem', fontSize: '0.8rem' }}>
                         Inquire Now
-                    </a>
+                    </Link>
                 </div>
             </div>
         </nav>

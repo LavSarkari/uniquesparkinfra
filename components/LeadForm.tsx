@@ -119,6 +119,18 @@ export default function LeadForm({ brand, title, submitButtonText, extraFields }
                     <input type="email" id="base_email" name="email" className="form-input" required placeholder="john@example.com" />
                 </div>
 
+                <div className="form-group">
+                    <label htmlFor="base_message" className="form-label">Message / Requirements</label>
+                    <textarea
+                        id="base_message"
+                        name="interest"
+                        className="form-input"
+                        rows={4}
+                        placeholder="Tell us more about your inquiry..."
+                        style={{ resize: 'vertical', minHeight: '100px' }}
+                    ></textarea>
+                </div>
+
                 {extraFields}
 
                 <button

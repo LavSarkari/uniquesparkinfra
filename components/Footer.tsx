@@ -9,12 +9,15 @@ export default function Footer() {
             marginTop: 'auto'
         }}>
             <div className="container">
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: '2fr 1fr 1fr',
-                    gap: 'var(--space-2xl)',
-                    marginBottom: 'var(--space-xl)'
-                }}>
+                <div
+                    className="footer-grid"
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: '2fr 1fr 1fr',
+                        gap: 'var(--space-2xl)',
+                        marginBottom: 'var(--space-xl)'
+                    }}
+                >
 
                     <div style={{ maxWidth: '400px' }}>
                         <h3 style={{

@@ -31,12 +31,12 @@
   /* Dusty Blue/Slate */
 
   /* Spacing System */
-  --space-xs: 0.5rem;
-  --space-sm: 1rem;
-  --space-md: 2rem;
-  --space-lg: 4rem;
-  --space-xl: 6rem;
-  --space-2xl: 8rem;
+  --space-xs: clamp(0.25rem, 1vw, 0.5rem);
+  --space-sm: clamp(0.5rem, 2vw, 1rem);
+  --space-md: clamp(1rem, 4vw, 2rem);
+  --space-lg: clamp(2rem, 8vw, 4rem);
+  --space-xl: clamp(3rem, 12vw, 6rem);
+  --space-2xl: clamp(4rem, 16vw, 8rem);
 
   /* UI Elements - Softer, more organic feel */
   --radius-sm: 8px;
@@ -139,6 +139,32 @@ p {
 
 .section-lg {
   padding: var(--space-2xl) 0;
+}
+
+/* Responsive Utilities */
+@media (max-width: 768px) {
+  .mobile-grid-1 {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-lg) !important;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-xl) !important;
+  }
+
+  .mobile-text-center {
+    text-align: center !important;
+  }
+
+  .mobile-hide {
+    display: none !important;
+  }
+
+  /* Reduce section padding further for mobile */
+  .section-lg {
+    padding: var(--space-xl) 0 !important;
+  }
 }
 
 /* Premium Buttons */

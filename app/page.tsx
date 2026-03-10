@@ -22,12 +22,12 @@ export default function Home() {
               letterSpacing: '0.15em',
               fontSize: '0.85rem',
               color: 'var(--text-muted)',
-              marginBottom: 'var(--space-md)'
+              marginBottom: 'var(--space-sm)'
             }}>
               Est. 2005 &mdash; Varanasi, India
             </div>
 
-            <h1>
+            <h1 style={{ marginBottom: 'var(--space-sm)' }}>
               Building Legacies.<br />
               <span style={{ color: 'var(--text-secondary)', fontWeight: 300 }}>Shaping the Future.</span>
             </h1>
@@ -87,7 +87,7 @@ export default function Home() {
             {/* Chandraprabha */}
             <div className="division-card">
               <div className="card-img-wrapper" style={{
-                height: '300px',
+                height: 'clamp(200px, 30vw, 300px)',
                 backgroundImage: 'url("/images/divisions/chandraprabha.png")',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
@@ -107,7 +107,7 @@ export default function Home() {
             {/* QalaGriha */}
             <div className="division-card">
               <div className="card-img-wrapper" style={{
-                height: '300px',
+                height: 'clamp(200px, 30vw, 300px)',
                 backgroundImage: 'url("/images/divisions/interiors.png")',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
@@ -127,7 +127,7 @@ export default function Home() {
             {/* US Projects */}
             <div className="division-card">
               <div className="card-img-wrapper" style={{
-                height: '300px',
+                height: 'clamp(200px, 30vw, 300px)',
                 backgroundImage: 'url("/images/divisions/projects.png")',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
@@ -146,48 +146,53 @@ export default function Home() {
 
           </div>
         </div>
-        {/* Contact / Inquiry Section */}
-        <section id="contact" className="section-lg bg-primary">
-          <div className="container">
-            <div style={{
+      </section>
+
+      {/* Contact / Inquiry Section */}
+      <section id="contact" className="section-lg bg-primary">
+        <div className="container">
+          <div
+            className="mobile-grid-1"
+            style={{
               display: 'grid',
               gridTemplateColumns: '1fr 1fr',
               gap: 'var(--space-2xl)',
               alignItems: 'center'
-            }}>
-              <div>
-                <h2 style={{ fontSize: '3rem', fontWeight: 300, marginBottom: 'var(--space-lg)' }}>
-                  Begin Your <span style={{ color: 'var(--accent-corp)', fontWeight: 400 }}>Legacy.</span>
-                </h2>
-                <p className="text-lead" style={{ marginBottom: 'var(--space-xl)' }}>
-                  Whether you are looking for a strategic investment, a bespoke residence, or
-                  visionary interior design, our relationship managers are ready to assist you.
-                </p>
+            }}
+          >
+            <div className="mobile-text-center">
+              <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', fontWeight: 300, marginBottom: 'var(--space-lg)' }}>
+                Begin Your <span style={{ color: 'var(--accent-corp)', fontWeight: 400 }}>Legacy.</span>
+              </h2>
+              <p className="text-lead" style={{ marginBottom: 'var(--space-xl)', marginInline: 'auto' }}>
+                Whether you are looking for a strategic investment, a bespoke residence, or
+                visionary interior design, our relationship managers are ready to assist you.
+              </p>
 
-                <div style={{ display: 'grid', gap: 'var(--space-md)' }}>
-                  <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                    <div style={{ width: '40px', height: '1px', background: 'var(--border-color)' }}></div>
-                    <div style={{ fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Corporate Headquarters</div>
-                  </div>
-                  <p style={{ color: 'var(--text-secondary)', paddingLeft: 'calc(40px + 1rem)' }}>
-                    Unique Spark Tower, Sigra - Mahmoorganj Rd,<br />
-                    Varanasi, Uttar Pradesh 221010
-                  </p>
+              <div style={{ display: 'grid', gap: 'var(--space-md)', textAlign: 'left', maxWidth: '400px', marginInline: 'auto' }}>
+                <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                  <div style={{ width: '40px', height: '1px', background: 'var(--border-color)' }}></div>
+                  <div style={{ fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Corporate Headquarters</div>
                 </div>
-              </div>
-
-              <div>
-                <Suspense fallback={<div>Loading form...</div>}>
-                  <LeadForm
-                    brand="Unique Spark Projects"
-                    title="General Inquiry"
-                    submitButtonText="Send Message"
-                  />
-                </Suspense>
+                <p style={{ color: 'var(--text-secondary)', paddingLeft: 'calc(40px + 1rem)' }}>
+                  Unique Spark Tower, Sigra - Mahmoorganj Rd,<br />
+                  Varanasi, Uttar Pradesh 221010
+                </p>
               </div>
             </div>
+
+            <div style={{ width: '100%', maxWidth: '500px', marginInline: 'auto' }}>
+              <Suspense fallback={<div>Loading form...</div>}>
+                <LeadForm
+                  brand="Unique Spark Projects"
+                  title="General Inquiry"
+                  submitButtonText="Send Message"
+                />
+              </Suspense>
+            </div>
           </div>
-        </section>
+        </div>
+      </section>
 
     </div>
   );
