@@ -121,6 +121,15 @@ export default function UniqueSparkProjects() {
                                 Request Investment Prospectus &rarr;
                             </a>
                         </div>
+
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-md)', marginBottom: 'var(--space-xl)' }}>
+                            <div style={{ background: 'var(--bg-tertiary)', border: '1px solid var(--border-light)', height: '240px', overflow: 'hidden' }}>
+                                <img src="/images/features/us_1.png" alt="Commercial Real Estate" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                            </div>
+                            <div style={{ background: 'var(--bg-tertiary)', border: '1px solid var(--border-light)', height: '240px', overflow: 'hidden' }}>
+                                <img src="/images/features/us_2.png" alt="Smart Township Development" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                            </div>
+                        </div>
                     </div>
 
                     {/* Form sticky sidebar - Adjust for mobile */}

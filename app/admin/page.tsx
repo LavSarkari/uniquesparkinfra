@@ -44,13 +44,13 @@ export default function AdminDashboard() {
 
     return (
         <div className="bg-tertiary min-h-screen">
-            <div className="container" style={{ padding: 'var(--space-xl) 1.5rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 'var(--space-xl)' }}>
-                    <div>
-                        <h1 style={{ fontSize: '2.5rem', marginBottom: '0.25rem' }}>Partner Portal</h1>
-                        <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', letterSpacing: '0.02em' }}>Intelligence & CRM Aggregation</p>
+            <div className="container" style={{ padding: 'var(--space-lg) 1rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-xl)', flexWrap: 'wrap', gap: 'var(--space-md)' }}>
+                    <div className="mobile-text-center" style={{ flex: '1 1 auto' }}>
+                        <h1 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', marginBottom: '0.25rem' }}>Partner Portal</h1>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', letterSpacing: '0.02em' }}>Intelligence & CRM Aggregation</p>
                     </div>
-                    <button onClick={fetchLeads} className="btn btn-outline" style={{ padding: '0.75rem 1.5rem' }}>
+                    <button onClick={fetchLeads} className="btn btn-outline" style={{ padding: '0.65rem 1.25rem', fontSize: '0.9rem' }}>
                         Sync Intelligence
                     </button>
                 </div>
@@ -61,27 +61,27 @@ export default function AdminDashboard() {
                     </div>
                 ) : (
                     <>
-                        {/* Top Stats Cards */}
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--space-md)', marginBottom: 'var(--space-xl)' }}>
+                        {/* Top Stats Cards - Responsive */}
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 'var(--space-md)', marginBottom: 'var(--space-xl)' }}>
                             <div style={{ background: 'var(--bg-primary)', padding: 'var(--space-md)', border: '1px solid var(--border-color)', boxShadow: 'var(--shadow-sm)' }}>
-                                <div style={{ color: 'var(--text-muted)', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem' }}>Total Qualified</div>
-                                <div style={{ fontSize: '2.5rem', fontWeight: 300, color: 'var(--text-primary)' }}>{totalLeads}</div>
+                                <div style={{ color: 'var(--text-muted)', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem' }}>Total Qualified</div>
+                                <div style={{ fontSize: '2rem', fontWeight: 300, color: 'var(--text-primary)' }}>{totalLeads}</div>
                             </div>
                             <div style={{ background: 'var(--bg-primary)', padding: 'var(--space-md)', border: '1px solid var(--border-color)', borderBottom: `3px solid var(--brand-chandraprabha)`, boxShadow: 'var(--shadow-sm)' }}>
-                                <div style={{ color: 'var(--text-muted)', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem' }}>Chandraprabha</div>
-                                <div style={{ fontSize: '2.5rem', fontWeight: 300, color: 'var(--text-primary)' }}>{leads.filter(l => l.brand === 'Chandraprabha Realty').length}</div>
+                                <div style={{ color: 'var(--text-muted)', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem' }}>Chandraprabha</div>
+                                <div style={{ fontSize: '2rem', fontWeight: 300, color: 'var(--text-primary)' }}>{leads.filter(l => l.brand === 'Chandraprabha Realty').length}</div>
                             </div>
                             <div style={{ background: 'var(--bg-primary)', padding: 'var(--space-md)', border: '1px solid var(--border-color)', borderBottom: `3px solid var(--brand-qalagriha)`, boxShadow: 'var(--shadow-sm)' }}>
-                                <div style={{ color: 'var(--text-muted)', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem' }}>QalaGriha</div>
-                                <div style={{ fontSize: '2.5rem', fontWeight: 300, color: 'var(--text-primary)' }}>{leads.filter(l => l.brand === 'QalaGriha Interiors').length}</div>
+                                <div style={{ color: 'var(--text-muted)', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem' }}>QalaGriha</div>
+                                <div style={{ fontSize: '2rem', fontWeight: 300, color: 'var(--text-primary)' }}>{leads.filter(l => l.brand === 'QalaGriha Interiors').length}</div>
                             </div>
                             <div style={{ background: 'var(--bg-primary)', padding: 'var(--space-md)', border: '1px solid var(--border-color)', borderBottom: `3px solid var(--brand-projects)`, boxShadow: 'var(--shadow-sm)' }}>
-                                <div style={{ color: 'var(--text-muted)', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem' }}>Unique Spark Dev</div>
-                                <div style={{ fontSize: '2.5rem', fontWeight: 300, color: 'var(--text-primary)' }}>{leads.filter(l => l.brand === 'Unique Spark Projects').length}</div>
+                                <div style={{ color: 'var(--text-muted)', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem' }}>Unique Spark Dev</div>
+                                <div style={{ fontSize: '2rem', fontWeight: 300, color: 'var(--text-primary)' }}>{leads.filter(l => l.brand === 'Unique Spark Projects').length}</div>
                             </div>
                         </div>
 
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 350px', gap: 'var(--space-lg)' }}>
+                        <div className="mobile-grid-1" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 320px', gap: 'var(--space-lg)', alignItems: 'start' }}>
 
                             {/* Main Data Table */}
                             <div style={{ background: 'var(--bg-primary)', border: '1px solid var(--border-color)', boxShadow: 'var(--shadow-md)' }}>
@@ -100,8 +100,8 @@ export default function AdminDashboard() {
                                     </select>
                                 </div>
 
-                                <div style={{ overflowX: 'auto' }}>
-                                    <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+                                <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
+                                    <table style={{ minWidth: '800px', width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
                                         <thead style={{ background: 'var(--bg-tertiary)' }}>
                                             <tr>
                                                 <th style={{ padding: '1.25rem 1.5rem', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-secondary)', fontWeight: 500, borderBottom: '1px solid var(--border-light)' }}>Client Identity</th>
@@ -189,38 +189,51 @@ export default function AdminDashboard() {
                             {/* Sidebar Analytics */}
                             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
                                 <div style={{ background: 'var(--bg-primary)', padding: 'var(--space-md)', border: '1px solid var(--border-color)', boxShadow: 'var(--shadow-sm)' }}>
-                                    <h4 style={{ fontSize: '1rem', fontWeight: 400, marginBottom: '1.5rem', borderBottom: '1px solid var(--border-light)', paddingBottom: '0.5rem' }}>
+                                    <h4 style={{ fontSize: '0.85rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1.5rem', color: 'var(--text-muted)', borderBottom: '1px solid var(--border-light)', paddingBottom: '0.75rem' }}>
                                         Origin Density
                                     </h4>
                                     {Object.entries(sources).length === 0 ? (
                                         <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>Insufficient data matrix.</p>
                                     ) : (
-                                        <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '0.9rem' }}>
-                                            {Object.entries(sources).sort((a: any, b: any) => b[1] - a[1]).map(([source, count]: any) => (
-                                                <li key={source} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
-                                                    <span style={{ color: 'var(--text-secondary)' }}>{source}</span>
-                                                    <span style={{ fontWeight: 500, color: 'var(--text-primary)' }}>{count}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
+                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                                            {Object.entries(sources).sort((a: any, b: any) => b[1] - a[1]).map(([source, count]: any) => {
+                                                const percentage = Math.round((count / totalLeads) * 100);
+                                                return (
+                                                    <div key={source}>
+                                                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem', fontSize: '0.85rem' }}>
+                                                            <span style={{ color: 'var(--text-secondary)', textTransform: 'capitalize' }}>{source}</span>
+                                                            <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{count}</span>
+                                                        </div>
+                                                        <div style={{ height: '4px', background: 'var(--bg-tertiary)', borderRadius: '2px', overflow: 'hidden' }}>
+                                                            <div style={{
+                                                                width: `${percentage}%`,
+                                                                height: '100%',
+                                                                background: source === 'google' ? '#4285F4' : source === 'whatsapp' ? '#25D366' : 'var(--text-primary)',
+                                                                opacity: 0.8
+                                                            }}></div>
+                                                        </div>
+                                                    </div>
+                                                );
+                                            })}
+                                        </div>
                                     )}
                                 </div>
 
                                 <div style={{ background: 'var(--bg-primary)', padding: 'var(--space-md)', border: '1px solid var(--border-color)', boxShadow: 'var(--shadow-sm)' }}>
-                                    <h4 style={{ fontSize: '1rem', fontWeight: 400, marginBottom: '1.5rem', borderBottom: '1px solid var(--border-light)', paddingBottom: '0.5rem' }}>
+                                    <h4 style={{ fontSize: '0.85rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1.5rem', color: 'var(--text-muted)', borderBottom: '1px solid var(--border-light)', paddingBottom: '0.75rem' }}>
                                         Campaign Performance
                                     </h4>
                                     {Object.entries(campaigns).length === 0 ? (
                                         <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>Insufficient data matrix.</p>
                                     ) : (
-                                        <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '0.9rem' }}>
+                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                                             {Object.entries(campaigns).sort((a: any, b: any) => b[1] - a[1]).map(([campaign, count]: any) => (
-                                                <li key={campaign} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.75rem', gap: '1rem' }}>
-                                                    <span style={{ color: 'var(--text-secondary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{campaign}</span>
-                                                    <span style={{ fontWeight: 500, color: 'var(--text-primary)' }}>{count}</span>
-                                                </li>
+                                                <div key={campaign} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.85rem', padding: '0.5rem', background: 'var(--bg-tertiary)', borderRadius: '4px' }}>
+                                                    <span style={{ color: 'var(--text-secondary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '200px' }}>{campaign.replace(/_/g, ' ')}</span>
+                                                    <span style={{ fontWeight: 600, color: 'var(--text-primary)', background: 'var(--bg-primary)', padding: '0.1rem 0.5rem', borderRadius: '10px', fontSize: '0.75rem', border: '1px solid var(--border-light)' }}>{count}</span>
+                                                </div>
                                             ))}
-                                        </ul>
+                                        </div>
                                     )}
                                 </div>
                             </div>

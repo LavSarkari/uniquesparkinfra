@@ -117,6 +117,15 @@ export default function QalaGrihaInteriors() {
                             </div>
                         </div>
 
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-md)', marginBottom: 'var(--space-xl)' }}>
+                            <div style={{ background: 'var(--bg-tertiary)', border: '1px solid var(--border-light)', height: '240px', overflow: 'hidden' }}>
+                                <img src="/images/features/qg_1.png" alt="Luxury Interior Design" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                            </div>
+                            <div style={{ background: 'var(--bg-tertiary)', border: '1px solid var(--border-light)', height: '240px', overflow: 'hidden' }}>
+                                <img src="/images/features/qg_2.png" alt="Corporate Office Design" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                            </div>
+                        </div>
+
                         <div style={{ background: 'var(--bg-tertiary)', padding: 'var(--space-lg)', border: '1px solid var(--border-light)' }}>
                             <p style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', fontStyle: 'italic', marginBottom: 'var(--space-md)', lineHeight: 1.6 }}>
                                 "QalaGriha approaches interiors not as decoration, but as a deep psychological study of the user. Our newly finished 4BHK feels less like an apartment, and more like a private, luxurious retreat."

@@ -107,11 +107,11 @@ export default function ChandraprabhaRealty() {
                                 Featured Collection
                             </h3>
                             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-md)' }}>
-                                <div style={{ background: 'var(--bg-tertiary)', border: '1px solid var(--border-light)', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-                                    [Property Image Placeholder]
+                                <div style={{ background: 'var(--bg-tertiary)', border: '1px solid var(--border-light)', height: '240px', overflow: 'hidden' }}>
+                                    <img src="/images/features/cp_1.png" alt="Luxury Plot Varanasi" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                                 </div>
-                                <div style={{ background: 'var(--bg-tertiary)', border: '1px solid var(--border-light)', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-                                    [Property Image Placeholder]
+                                <div style={{ background: 'var(--bg-tertiary)', border: '1px solid var(--border-light)', height: '240px', overflow: 'hidden' }}>
+                                    <img src="/images/features/cp_2.png" alt="Modern Villa Exterior" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                                 </div>
                             </div>
                         </div>
