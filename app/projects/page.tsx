@@ -35,25 +35,25 @@ export default function UniqueSparkProjects() {
             {/* Luxury Hero Section */}
             <section style={{
                 backgroundColor: 'var(--bg-tertiary)',
-                padding: 'var(--space-2xl) 0 var(--space-xl)',
+                padding: 'var(--space-xl) 0',
                 borderBottom: `4px solid var(--brand-projects)`
             }}>
                 <div className="container">
-                    <div style={{ maxWidth: '900px' }} className="fade-in">
+                    <div style={{ maxWidth: '900px' }} className="fade-in mobile-text-center">
                         <span style={{
                             display: 'inline-block',
                             textTransform: 'uppercase',
                             letterSpacing: '0.15em',
-                            fontSize: '0.85rem',
+                            fontSize: '0.8rem',
                             color: 'var(--brand-projects)',
-                            marginBottom: 'var(--space-md)'
+                            marginBottom: 'var(--space-sm)'
                         }}>
                             Unique Spark Projects &mdash; Development Wing
                         </span>
-                        <h1 style={{ fontWeight: 300, fontSize: '4rem' }}>
+                        <h1 style={{ fontWeight: 300, fontSize: 'clamp(2.50rem, 8vw, 4rem)', lineHeight: 1.2 }}>
                             Engineered <span style={{ color: 'var(--brand-projects)', fontWeight: 400 }}>Returns.</span>
                         </h1>
-                        <p className="text-lead" style={{ maxWidth: '700px' }}>
+                        <p className="text-lead" style={{ maxWidth: '700px', marginInline: 'auto' }}>
                             Strategic partner access to landmark commercial centers, smart infrastructure, and world-class residential townships. Built for generational wealth.
                         </p>
                     </div>
@@ -62,15 +62,15 @@ export default function UniqueSparkProjects() {
 
             {/* Content & Inquiry Form */}
             <section className="section bg-primary">
-                <div className="container" style={{
+                <div className="container mobile-grid-1" style={{
                     display: 'grid',
                     gridTemplateColumns: 'minmax(0, 1.2fr) minmax(0, 1fr)',
                     gap: 'var(--space-2xl)',
                     alignItems: 'start'
                 }}>
 
-                    <div style={{ paddingRight: 'var(--space-md)' }}>
-                        <h2 style={{ fontSize: '2rem', fontWeight: 300, marginBottom: 'var(--space-xl)' }}>
+                    <div>
+                        <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2rem)', fontWeight: 300, marginBottom: 'var(--space-lg)' }}>
                             Institutional Grade Architecture
                         </h2>
 
@@ -108,22 +108,23 @@ export default function UniqueSparkProjects() {
                             background: 'var(--bg-primary)',
                             padding: 'var(--space-md) var(--space-lg)',
                             borderLeft: '4px solid var(--brand-projects)',
-                            boxShadow: 'var(--shadow-sm)'
+                            boxShadow: 'var(--shadow-sm)',
+                            marginBottom: 'var(--space-xl)'
                         }}>
                             <h3 style={{ fontSize: '1.2rem', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem', color: 'var(--brand-projects)' }}>
                                 Active Capital Call
                             </h3>
-                            <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem', fontSize: '0.95rem' }}>
+                            <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem', fontSize: '0.9rem' }}>
                                 We are formally accepting private expressions of interest (EOI) for Phase 1 of our upcoming 15-acre mixed-use development situated in the Varanasi Prime Commercial Corridor.
                             </p>
-                            <a href="#form" className="nav-link" style={{ color: 'var(--brand-projects)', fontWeight: 500 }}>
+                            <a href="#form" className="nav-link" style={{ color: 'var(--brand-projects)', fontWeight: 500, fontSize: '0.9rem' }}>
                                 Request Investment Prospectus &rarr;
                             </a>
                         </div>
                     </div>
 
-                    {/* Form sticky sidebar */}
-                    <div style={{ position: 'sticky', top: '120px' }} id="form">
+                    {/* Form sticky sidebar - Adjust for mobile */}
+                    <div style={{ position: 'relative', top: '0', maxWidth: '500px', width: '100%', marginInline: 'auto' }} className="desktop-sticky" id="form">
                         <Suspense fallback={<div style={{ padding: 'var(--space-xl)', textAlign: 'center', border: '1px solid var(--border-light)' }}>Loading secure form...</div>}>
                             <LeadForm
                                 brand="Unique Spark Projects"

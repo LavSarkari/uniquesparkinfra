@@ -165,6 +165,18 @@ p {
   .section-lg {
     padding: var(--space-xl) 0 !important;
   }
+
+  .desktop-sticky {
+    position: relative !important;
+    top: 0 !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .desktop-sticky {
+    position: sticky !important;
+    top: 120px;
+  }
 }
 
 /* Premium Buttons */

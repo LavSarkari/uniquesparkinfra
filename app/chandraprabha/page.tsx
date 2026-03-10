@@ -34,25 +34,25 @@ export default function ChandraprabhaRealty() {
             {/* Luxury Hero Section */}
             <section style={{
                 backgroundColor: 'var(--bg-tertiary)',
-                padding: 'var(--space-2xl) 0 var(--space-xl)',
+                padding: 'var(--space-xl) 0',
                 borderBottom: `4px solid var(--brand-chandraprabha)`
             }}>
                 <div className="container">
-                    <div style={{ maxWidth: '900px' }} className="fade-in">
+                    <div style={{ maxWidth: '900px' }} className="fade-in mobile-text-center">
                         <span style={{
                             display: 'inline-block',
                             textTransform: 'uppercase',
                             letterSpacing: '0.15em',
-                            fontSize: '0.85rem',
+                            fontSize: '0.8rem',
                             color: 'var(--brand-chandraprabha)',
-                            marginBottom: 'var(--space-md)'
+                            marginBottom: 'var(--space-sm)'
                         }}>
                             Chandraprabha Realty &mdash; Sales Vertical
                         </span>
-                        <h1 style={{ fontWeight: 300, fontSize: '4rem' }}>
+                        <h1 style={{ fontWeight: 300, fontSize: 'clamp(2.50rem, 8vw, 4rem)', lineHeight: 1.2 }}>
                             Curating <span style={{ color: 'var(--brand-chandraprabha)', fontWeight: 400 }}>Legacy</span> Properties.
                         </h1>
-                        <p className="text-lead" style={{ maxWidth: '700px' }}>
+                        <p className="text-lead" style={{ maxWidth: '700px', marginInline: 'auto' }}>
                             Access exclusive, fully-vetted luxury plots and residential investments in Varanasi and select NRI corridors.
                         </p>
                     </div>
@@ -61,15 +61,15 @@ export default function ChandraprabhaRealty() {
 
             {/* Content & Inquiry Form */}
             <section className="section bg-primary">
-                <div className="container" style={{
+                <div className="container mobile-grid-1" style={{
                     display: 'grid',
                     gridTemplateColumns: 'minmax(0, 1.2fr) minmax(0, 1fr)',
                     gap: 'var(--space-2xl)',
                     alignItems: 'start'
                 }}>
 
-                    <div style={{ paddingRight: 'var(--space-md)' }}>
-                        <h2 style={{ fontSize: '2rem', fontWeight: 300, marginBottom: 'var(--space-xl)' }}>
+                    <div>
+                        <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2rem)', fontWeight: 300, marginBottom: 'var(--space-lg)' }}>
                             The Chandraprabha Advantage
                         </h2>
 
@@ -102,23 +102,23 @@ export default function ChandraprabhaRealty() {
                             </div>
                         </div>
 
-                        <div style={{ marginTop: 'var(--space-2xl)' }}>
-                            <h3 style={{ fontSize: '1.5rem', fontWeight: 300, borderBottom: '1px solid var(--border-light)', paddingBottom: '1rem', marginBottom: 'var(--space-md)' }}>
+                        <div style={{ marginTop: 'var(--space-xl)' }}>
+                            <h3 style={{ fontSize: '1.25rem', fontWeight: 300, borderBottom: '1px solid var(--border-light)', paddingBottom: '1rem', marginBottom: 'var(--space-md)' }}>
                                 Featured Collection
                             </h3>
-                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-md)' }}>
-                                <div style={{ background: 'var(--bg-tertiary)', border: '1px solid var(--border-light)', height: '240px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)' }}>
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-md)' }}>
+                                <div style={{ background: 'var(--bg-tertiary)', border: '1px solid var(--border-light)', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
                                     [Property Image Placeholder]
                                 </div>
-                                <div style={{ background: 'var(--bg-tertiary)', border: '1px solid var(--border-light)', height: '240px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)' }}>
+                                <div style={{ background: 'var(--bg-tertiary)', border: '1px solid var(--border-light)', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
                                     [Property Image Placeholder]
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* Form sticky sidebar */}
-                    <div style={{ position: 'sticky', top: '120px' }}>
+                    {/* Form sticky sidebar - Adjust for mobile */}
+                    <div style={{ position: 'relative', top: '0', maxWidth: '500px', width: '100%', marginInline: 'auto' }} className="desktop-sticky">
                         <Suspense fallback={<div style={{ padding: 'var(--space-xl)', textAlign: 'center', border: '1px solid var(--border-light)' }}>Loading secure form...</div>}>
                             <LeadForm
                                 brand="Chandraprabha Realty"
