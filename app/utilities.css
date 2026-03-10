@@ -1,0 +1,101 @@
+/* Refined Hover States */
+.nav-link {
+    position: relative;
+    opacity: 0.8;
+    font-weight: 400;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+    padding: 0.5rem 0;
+}
+
+.nav-link:hover {
+    opacity: 1;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: currentColor;
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-item-chandraprabha:hover {
+    color: var(--brand-chandraprabha);
+}
+
+.nav-item-qalagriha:hover {
+    color: var(--brand-qalagriha);
+}
+
+.nav-item-projects:hover {
+    color: var(--brand-projects);
+}
+
+/* Minimalist Card Effects */
+.division-card {
+    position: relative;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.division-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--border-light);
+}
+
+.card-img-wrapper {
+    overflow: hidden;
+    position: relative;
+}
+
+.card-img-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.02);
+    pointer-events: none;
+}
+
+/* Leaflet Premium Popup Overrides */
+.leaflet-popup-content-wrapper {
+    background: var(--bg-primary) !important;
+    border-radius: var(--radius-md) !important;
+    box-shadow: var(--shadow-lg) !important;
+    border: 1px solid var(--border-light) !important;
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+.leaflet-popup-content {
+    margin: 0 !important;
+    width: 250px !important;
+}
+
+.leaflet-popup-tip-container {
+    display: none !important;
+    /* Hide native arrow */
+}
+
+/* Mobile Responsiveness for Navigation */
+@media (max-width: 900px) {
+    .nav-desktop {
+        display: none !important;
+    }
+
+    .nav-container {
+        height: 70px !important;
+        padding: 1rem !important;
+    }
+}
