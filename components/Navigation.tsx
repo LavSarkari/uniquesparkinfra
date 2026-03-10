@@ -2,17 +2,30 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Navigation() {
+    const pathname = usePathname();
     const [isScrolled, setIsScrolled] = useState(false);
+    const [shouldHide, setShouldHide] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 20);
         };
         window.addEventListener('scroll', handleScroll);
+
+        // Robust check for admin path
+        if (pathname?.startsWith('/admin') || window.location.pathname.startsWith('/admin')) {
+            setShouldHide(true);
+        } else {
+            setShouldHide(false);
+        }
+
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    }, [pathname]);
+
+    if (shouldHide) return null;
 
     return (
         <nav style={{

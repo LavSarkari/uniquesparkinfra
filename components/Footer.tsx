@@ -1,6 +1,22 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Footer() {
+    const pathname = usePathname();
+    const [shouldHide, setShouldHide] = useState(false);
+
+    useEffect(() => {
+        if (pathname?.startsWith('/admin') || (typeof window !== 'undefined' && window.location.pathname.startsWith('/admin'))) {
+            setShouldHide(true);
+        } else {
+            setShouldHide(false);
+        }
+    }, [pathname]);
+
+    if (shouldHide) return null;
     return (
         <footer style={{
             background: 'var(--bg-primary)',
