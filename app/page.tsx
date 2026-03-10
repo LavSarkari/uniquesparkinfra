@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import MapWrapper from '@/components/MapWrapper';
+import LeadForm from '@/components/LeadForm';
+import { Suspense } from 'react';
 
 export default function Home() {
   return (
@@ -86,7 +88,9 @@ export default function Home() {
             <div className="division-card">
               <div className="card-img-wrapper" style={{
                 height: '300px',
-                background: 'linear-gradient(to bottom, #f3f0ea, #e8dfcc)',
+                backgroundImage: 'url("/images/divisions/chandraprabha.png")',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
                 borderBottom: '3px solid var(--brand-chandraprabha)'
               }}></div>
               <div style={{ padding: 'var(--space-xl) var(--space-lg)' }}>
@@ -104,7 +108,9 @@ export default function Home() {
             <div className="division-card">
               <div className="card-img-wrapper" style={{
                 height: '300px',
-                background: 'linear-gradient(to bottom, #f5f0ef, #eadcda)',
+                backgroundImage: 'url("/images/divisions/interiors.png")',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
                 borderBottom: '3px solid var(--brand-qalagriha)'
               }}></div>
               <div style={{ padding: 'var(--space-xl) var(--space-lg)' }}>
@@ -122,7 +128,9 @@ export default function Home() {
             <div className="division-card">
               <div className="card-img-wrapper" style={{
                 height: '300px',
-                background: 'linear-gradient(to bottom, #f0f2f5, #e0e5eb)',
+                backgroundImage: 'url("/images/divisions/projects.png")',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
                 borderBottom: '3px solid var(--brand-projects)'
               }}></div>
               <div style={{ padding: 'var(--space-xl) var(--space-lg)' }}>
@@ -138,7 +146,48 @@ export default function Home() {
 
           </div>
         </div>
-      </section>
+        {/* Contact / Inquiry Section */}
+        <section id="contact" className="section-lg bg-primary">
+          <div className="container">
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: 'var(--space-2xl)',
+              alignItems: 'center'
+            }}>
+              <div>
+                <h2 style={{ fontSize: '3rem', fontWeight: 300, marginBottom: 'var(--space-lg)' }}>
+                  Begin Your <span style={{ color: 'var(--accent-corp)', fontWeight: 400 }}>Legacy.</span>
+                </h2>
+                <p className="text-lead" style={{ marginBottom: 'var(--space-xl)' }}>
+                  Whether you are looking for a strategic investment, a bespoke residence, or
+                  visionary interior design, our relationship managers are ready to assist you.
+                </p>
+
+                <div style={{ display: 'grid', gap: 'var(--space-md)' }}>
+                  <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                    <div style={{ width: '40px', height: '1px', background: 'var(--border-color)' }}></div>
+                    <div style={{ fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Corporate Headquarters</div>
+                  </div>
+                  <p style={{ color: 'var(--text-secondary)', paddingLeft: 'calc(40px + 1rem)' }}>
+                    Unique Spark Tower, Sigra - Mahmoorganj Rd,<br />
+                    Varanasi, Uttar Pradesh 221010
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <Suspense fallback={<div>Loading form...</div>}>
+                  <LeadForm
+                    brand="Unique Spark Projects"
+                    title="General Inquiry"
+                    submitButtonText="Send Message"
+                  />
+                </Suspense>
+              </div>
+            </div>
+          </div>
+        </section>
 
     </div>
   );
