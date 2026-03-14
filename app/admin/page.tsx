@@ -85,17 +85,19 @@ export default function AdminDashboard() {
     };
 
     const exportToCSV = () => {
-        const headers = ["Name", "Email", "Phone", "Brand", "Interest", "City", "Date", "Status"];
+        const headers = ["Name", "Email", "Phone", "Brand", "Interest", "City", "Date", "Status", "Source", "Medium", "Campaign", "AdSet", "Keyword", "GCLID", "FBCLID"];
         const rows = leads.map(l => [
             l.name, l.email, l.phone, l.brand, l.interest || '', l.city || '', 
-            new Date(l.timestamp).toLocaleDateString(), l.pipelineStage
-        ].map(val => `"${val}"`).join(","));
+            new Date(l.timestamp).toLocaleDateString(), l.pipelineStage,
+            l.utm_source || 'Organic', l.utm_medium || 'Direct', l.utm_campaign || '',
+            l.utm_adset || '', l.utm_keyword || '', l.gclid || '', l.fbclid || ''
+        ].map(val => `"${String(val).replace(/"/g, '""')}"`).join(","));
         
-        const csvContent = "data:text/csv;charset=utf-8," + [headers.join(","), ...rows].join("\n");
+        const csvContent = "data:text/csv;charset=utf-8,\uFEFF" + [headers.join(","), ...rows].join("\n");
         const encodedUri = encodeURI(csvContent);
         const link = document.createElement("a");
         link.setAttribute("href", encodedUri);
-        link.setAttribute("download", `UniqueSpark_Leads_${new Date().toISOString().split('T')[0]}.csv`);
+        link.setAttribute("download", `UniqueSpark_Leads_Full_${new Date().toISOString().split('T')[0]}.csv`);
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -262,6 +264,7 @@ export default function AdminDashboard() {
                                             <th>Identity</th>
                                             <th>Vertical</th>
                                             <th>Intelligence</th>
+                                            <th>Attribution</th>
                                             <th>Status</th>
                                             <th>Manage</th>
                                         </tr>
@@ -292,6 +295,18 @@ export default function AdminDashboard() {
                                                         <div style={{ fontSize: '0.7rem', display: 'flex', gap: '0.4rem', color: '#71717A' }}>
                                                             {lead.city && <span>📍 {lead.city}</span>}
                                                             {lead.phone && <span>📞 {lead.phone}</span>}
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div style={{ fontSize: '0.85rem', fontWeight: 600, color: '#18181B', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                                                            {lead.utm_source === 'google' && <span>🔍</span>}
+                                                            {lead.utm_source === 'fb' && <span>📱</span>}
+                                                            {lead.utm_source === 'meta' && <span>📱</span>}
+                                                            {lead.utm_source === 'instagram' && <span>📸</span>}
+                                                            <span style={{ textTransform: 'capitalize' }}>{lead.utm_source || 'Organic'}</span>
+                                                        </div>
+                                                        <div style={{ fontSize: '0.7rem', color: '#71717A' }}>
+                                                            {lead.utm_medium || 'Direct'}
                                                         </div>
                                                     </td>
                                                     <td>
