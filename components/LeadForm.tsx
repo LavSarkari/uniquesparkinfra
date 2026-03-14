@@ -29,7 +29,8 @@ export default function LeadForm({ brand, title, submitButtonText, extraFields }
         setStatus('loading');
         setErrorMessage('');
 
-        const formData = new FormData(e.currentTarget);
+        const form = e.currentTarget;
+        const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
 
         const payload = { ...data, brand, utm_source: utmSource, utm_medium: utmMedium, utm_campaign: utmCampaign, utm_adset: utmAdset, utm_keyword: utmKeyword, gclid, fbclid };
@@ -45,7 +46,7 @@ export default function LeadForm({ brand, title, submitButtonText, extraFields }
 
             if (!response.ok) throw new Error(result.error || 'Failed to submit lead.');
 
-            e.currentTarget.reset();
+            form.reset();
             setStatus('success');
         } catch (err: any) {
             console.error(err);
