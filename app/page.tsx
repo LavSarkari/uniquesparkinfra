@@ -41,9 +41,6 @@ export default function Home() {
               <a href="#divisions" className="btn btn-primary" style={{ padding: '1rem 3rem' }}>
                 Discover Our Divisions
               </a>
-              <Link href="/admin" className="btn btn-outline" style={{ padding: '1rem 3rem' }}>
-                Partner Login
-              </Link>
             </div>
           </div>
         </div>
