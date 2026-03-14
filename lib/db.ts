@@ -2,12 +2,37 @@ import Database from 'better-sqlite3';
 import path from 'path';
 import fs from 'fs';
 
-const dbPath = path.join(process.cwd(), 'data', 'uniquespark.db');
+const isVercel = process.env.VERCEL === '1';
+const isProduction = process.env.NODE_ENV === 'production';
+const isServerless = isVercel || isProduction;
 
-// Ensure data directory exists
-const dataDir = path.dirname(dbPath);
-if (!fs.existsSync(dataDir)) {
-    fs.mkdirSync(dataDir, { recursive: true });
+// Path to the bundled database (read-only in production)
+const bundledDbPath = path.join(process.cwd(), 'data', 'uniquespark.db');
+// Path to the writable database
+const dbPath = isServerless ? '/tmp/uniquespark.db' : bundledDbPath;
+
+// Ensure writable directory exists
+if (isServerless) {
+    const dataDir = path.dirname(dbPath);
+    if (!fs.existsSync(dataDir)) {
+        fs.mkdirSync(dataDir, { recursive: true });
+    }
+    
+    // Copy the bundled database to /tmp if it doesn't exist there yet
+    // This preserves seeded data across some invocations (within the same container lifecycle)
+    if (fs.existsSync(bundledDbPath) && !fs.existsSync(dbPath)) {
+        try {
+            fs.copyFileSync(bundledDbPath, dbPath);
+        } catch (e) {
+            console.error('Failed to copy bundled database to /tmp', e);
+        }
+    }
+} else {
+    // Local dev flow
+    const dataDir = path.dirname(dbPath);
+    if (!fs.existsSync(dataDir)) {
+        fs.mkdirSync(dataDir, { recursive: true });
+    }
 }
 
 const db = new Database(dbPath);
