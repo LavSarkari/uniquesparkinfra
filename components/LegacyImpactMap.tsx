@@ -1,9 +1,8 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+import { useEffect, useState } from 'react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
-import { kml } from '@tmcw/togeojson';
 
 // Minimalist custom icons
 const createCustomIcon = (color: string) => {
@@ -25,7 +24,7 @@ const CATEGORY_COLORS: Record<string, string> = {
 };
 
 export default function LegacyMap() {
-    const [geoData, setGeoData] = useState<any>(null);
+    const [projects, setProjects] = useState<any[]>([]);
     const [filterCategory, setFilterCategory] = useState<string>('All Projects');
     const [filterYear, setFilterYear] = useState<string>('All Time');
 
@@ -40,30 +39,25 @@ export default function LegacyMap() {
             shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
         });
 
-        const fetchKML = async () => {
+        const fetchProjects = async () => {
             try {
-                const response = await fetch('/data/projects.kml');
-                const kmlText = await response.text();
-                const parser = new DOMParser();
-                const kmlDoc = parser.parseFromString(kmlText, 'text/xml');
-                const converted = kml(kmlDoc);
-                setGeoData(converted);
+                const response = await fetch('/api/projects');
+                const data = await response.json();
+                setProjects(data.projects || []);
             } catch (err) {
-                console.error("Error loading KML:", err);
+                console.error("Error loading projects:", err);
             }
         };
-        fetchKML();
+        fetchProjects();
     }, []);
 
-    const getCategorizedFeatures = () => {
-        if (!geoData) return [];
-
-        return geoData.features.filter((feature: any) => {
+    const getFilteredProjects = () => {
+        return projects.filter((project: any) => {
             let passCategory = true;
             let passYear = true;
 
-            const cat = feature.properties?.category;
-            const year = parseInt(feature.properties?.year, 10);
+            const cat = project.category;
+            const year = project.year;
 
             if (filterCategory !== 'All Projects') {
                 passCategory = cat === filterCategory;
@@ -79,7 +73,7 @@ export default function LegacyMap() {
         });
     };
 
-    const features = getCategorizedFeatures();
+    const filteredProjects = getFilteredProjects();
 
     return (
         <div style={{ padding: 'var(--space-2xl) 0', background: 'var(--bg-tertiary)' }}>
@@ -142,29 +136,30 @@ export default function LegacyMap() {
                                 url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
                             />
 
-                            {features.map((feature: any, idx: number) => {
-                                const [lng, lat] = feature.geometry.coordinates;
-                                const cat = feature.properties?.category || 'Default';
+                            {filteredProjects.map((project: any) => {
+                                const lat = project.lat;
+                                const lng = project.lng;
+                                const cat = project.category || 'Default';
                                 const color = CATEGORY_COLORS[cat] || CATEGORY_COLORS['Default'];
 
                                 return (
                                     <Marker
-                                        key={idx}
+                                        key={project.id}
                                         position={[lat, lng]}
                                         icon={createCustomIcon(color)}
                                     >
                                         <Popup className="premium-popup">
                                             <div style={{ padding: '0.5rem' }}>
                                                 <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: color, marginBottom: '0.25rem' }}>
-                                                    {cat} &middot; {feature.properties?.year}
+                                                    {cat} &middot; {project.year}
                                                 </div>
                                                 <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '1.1rem', fontWeight: 500, color: 'var(--text-primary)' }}>
-                                                    {feature.properties?.name}
+                                                    {project.name}
                                                 </h3>
                                                 <p style={{ margin: '0 0 1rem 0', fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.4 }}>
-                                                    {feature.properties?.description}
+                                                    {project.description}
                                                 </p>
-                                                <a href="#inquire" className="btn btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.75rem', width: '100%' }}>
+                                                <a href="#contact" className="btn btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.75rem', width: '100%' }}>
                                                     View Details
                                                 </a>
                                             </div>

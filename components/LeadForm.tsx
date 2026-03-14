@@ -45,8 +45,8 @@ export default function LeadForm({ brand, title, submitButtonText, extraFields }
 
             if (!response.ok) throw new Error(result.error || 'Failed to submit lead.');
 
-            setStatus('success');
             e.currentTarget.reset();
+            setStatus('success');
         } catch (err: any) {
             console.error(err);
             setStatus('error');

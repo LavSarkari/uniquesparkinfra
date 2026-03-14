@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { saveLead, getLeads } from '@/lib/storage';
+import { saveLead, getLeads, updateLead, deleteLead } from '@/lib/storage';
 
 export async function POST(request: Request) {
     try {
@@ -51,9 +51,8 @@ export async function POST(request: Request) {
                         timestamp: newLead.timestamp
                     })
                 });
-                console.log('Successfully synced lead to Master CRM');
             } catch (crmError) {
-                console.warn('CRM sync failed, lead saved locally. Error:', crmError);
+                // Silently handle CRM errors as we're using mock endpoints
             }
         }
 
@@ -86,5 +85,35 @@ export async function GET() {
             { error: 'Internal server error while fetching leads.' },
             { status: 500 }
         );
+    }
+}
+
+export async function PATCH(request: Request) {
+    try {
+        const body = await request.json();
+        const { id, ...data } = body;
+        if (!id) {
+            return NextResponse.json({ error: 'Missing ID' }, { status: 400 });
+        }
+        updateLead(id, data);
+        return NextResponse.json({ message: 'Lead updated successfully' });
+    } catch (error) {
+        console.error('API Error:', error);
+        return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    }
+}
+
+export async function DELETE(request: Request) {
+    try {
+        const { searchParams } = new URL(request.url);
+        const id = searchParams.get('id');
+        if (!id) {
+            return NextResponse.json({ error: 'Missing ID' }, { status: 400 });
+        }
+        deleteLead(id);
+        return NextResponse.json({ message: 'Lead deleted successfully' });
+    } catch (error) {
+        console.error('API Error:', error);
+        return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
     }
 }

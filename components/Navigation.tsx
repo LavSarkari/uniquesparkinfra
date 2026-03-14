@@ -69,9 +69,6 @@ export default function Navigation() {
 
                 {/* Action Area */}
                 <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }} className="nav-action">
-                    <Link href="/admin" className="nav-link nav-desktop" style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                        Partner Portal
-                    </Link>
                     <Link href="/#contact" className="btn btn-primary" style={{ padding: '0.75rem 1.5rem', fontSize: '0.8rem' }}>
                         Inquire Now
                     </Link>
